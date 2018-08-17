@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import store from './store'
 import iView from 'iview'
-import i18n from '@/locale'
 import config from '@/config'
 import importDirective from '@/directive'
 import 'iview/dist/styles/iview.css'
@@ -17,9 +16,7 @@ import env from '../config/env'
 /* eslint-disable */
 env === 'development' ? require('@/mock') : ''
 
-Vue.use(iView, {
-  i18n: (key, value) => i18n.t(key, value)
-})
+Vue.use(iView)
 Vue.config.productionTip = false
 /**
  * @description 全局注册应用配置
@@ -34,7 +31,6 @@ importDirective(Vue)
 new Vue({
   el: '#app',
   router,
-  i18n,
   store,
   render: h => h(App)
 })

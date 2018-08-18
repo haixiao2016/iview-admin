@@ -3,13 +3,19 @@ import { setToken, getToken } from '@/libs/util'
 
 export default {
   state: {
+    userData: {},
     userName: '',
     userId: '',
     avatorImgPath: '',
     token: getToken(),
-    access: ''
+    access: '',
+    roleList: [],
+    urlList: []
   },
   mutations: {
+    setUser (state, userData) {
+      state.userData = userData
+    },
     setAvator (state, avatorPath) {
       state.avatorImgPath = avatorPath
     },
@@ -25,6 +31,12 @@ export default {
     setToken (state, token) {
       state.token = token
       setToken(token)
+    },
+    setRole (state, roleList) {
+      state.roleList = roleList
+    },
+    setUrl (state, urlList) {
+      state.urlList = urlList
     }
   },
   actions: {
@@ -48,8 +60,11 @@ export default {
     handleLogOut ({ state, commit }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
+          commit('setUser', {})
           commit('setToken', '')
           commit('setAccess', [])
+          commit('setRole', [])
+          commit('setUrl', [])
           resolve()
         }).catch(err => {
           reject(err)
@@ -64,11 +79,14 @@ export default {
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token).then(res => {
-          const data = res.data
+          const data = {...res.data, ...{ISADMIN: 1}}
+          commit('setUser', data)
           commit('setAvator', data.avator)
           commit('setUserName', data.user_name)
           commit('setUserId', data.user_id)
           commit('setAccess', data.access)
+          commit('setRole', [])
+          commit('setUrl', [])
           resolve(data)
         }).catch(err => {
           reject(err)

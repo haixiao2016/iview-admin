@@ -21,7 +21,11 @@
 [简化版模板](https://github.com/iview/iview-admin/tree/template)
 
 `注：在线版本会在开发版本新小版本发布后更新到相应版本，所以如果想体验最新版本iview-admin，请clone完整项目代码到本地运行。`
-
+## 增加权限控制 == 后台传递路由列表
+    1. 后台需要传递`roleList`和`urlList`前者负责处理路由层面的权限，后者负责处理按钮层面的权限
+如果需要自己配置的话请自行修改`stroe/module/user.js`下的相关代码
+    2. 增加超级管理员权限，后台需在获取用户信息的时候传递`ISADMIN`，暂定参数为布尔类型, 如果为true,则不做路由权限认证。
+如需自己配置也可修改`stroe/module/permission.js`下的相关代码。
 ## Install
 ```bush
 // install dependencies

@@ -54,7 +54,7 @@ export default {
     search () {
       let res = {}
       this.Picker.length && this.Picker.map(item => {
-        if (!item.pickerValue[0].getTime) return
+        if (!item.pickerValue || !item.pickerValue.length || !item.pickerValue[0].getTime) return
         res = {...res,
           ...{
             [item.pickerKey]: [item.pickerValue[0].getTime(), item.pickerValue[1].getTime()]

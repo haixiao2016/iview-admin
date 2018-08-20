@@ -92,6 +92,25 @@ export const asyncRouter = [
     ]
   },
   {
+    path: '/test',
+    name: 'test',
+    meta: {
+      hide: true
+    },
+    component: Main,
+    children: [
+      {
+        path: 'index',
+        name: 'testIndex',
+        meta: {
+          icon: 'md-trending-up',
+          title: '测试查询'
+        },
+        component: () => import('@/view/test/test.vue')
+      }
+    ]
+  },
+  {
     path: '/directive',
     name: 'directive',
     meta: {
@@ -159,26 +178,6 @@ export const asyncRouter = [
         },
         component: () => import('@/view/multilevel/level-2-3.vue')
       },
-    ]
-  },
-  {
-    path: '/test',
-    name: 'test',
-    meta: {
-      icon: 'logo-buffer',
-      title: '测试查询'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'index',
-        name: 'testIndex',
-        meta: {
-          icon: 'md-trending-up',
-          title: '测试查询'
-        },
-        component: () => import('@/view/test/test.vue')
-      }
     ]
   },
   {

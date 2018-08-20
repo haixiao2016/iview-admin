@@ -52,12 +52,6 @@ export default {
     showModal () {
       this.modalVisible = true
     }
-  },
-  mounted () {
-    console.log('montend')
-  },
-  activated () {
-    console.log('activated')
   }
 }
 </script>

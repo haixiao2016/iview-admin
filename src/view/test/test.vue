@@ -7,6 +7,7 @@
 <script>
 import Search from '_c/search'
 export default {
+  name: 'testIndex',
   components: {
     Search
   },
@@ -31,6 +32,12 @@ export default {
         placeholder: '请选择城市'
       }]
     }
+  },
+  mounted () {
+    console.log(`测试montend`)
+  },
+  activated () {
+    console.log(`测试activated`)
   },
   methods: {
     search (res) {

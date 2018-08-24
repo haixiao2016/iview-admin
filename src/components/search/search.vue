@@ -1,5 +1,5 @@
 <template>
-  <div style="background:#eee;padding: 10px"  v-if="Picker.length||Input.length||Select.length">
+  <Card style="padding: 4px"  v-if="Picker.length||Input.length||Select.length">
     <div class="select-container" v-if="Picker.length">
       <Date-picker :editable="false" :placeholder="item.placeholder||'请选择时间段'" v-model="item.pickerValue" clearable :style="{'width':item.width?parseInt(item.width)+'px':'280px'}" v-for="(item,index) in Picker" :key="index" type="datetimerange" format="yyyy-MM-dd HH:mm:ss"></Date-picker>
     </div>
@@ -12,10 +12,10 @@
       </Select>
     </div>
     <div class="btn-control">
-      <Button type="primary" shape="circle" icon="ios-refresh" @click="reset">重置</Button>
+      <Button type="primary" shape="circle" icon="md-refresh" @click="reset">重置</Button>
       <Button type="primary" shape="circle" icon="ios-search" @click="search">搜索</Button>
     </div>
-  </div>
+  </Card>
 </template>
 <script type='text/ecmascript-6'>
 /**
@@ -97,6 +97,7 @@ export default {
 <style lang='less' scoped>
   .select-container{
     display: inline-block;
+    vertical-align: top;
     >div{
       margin-right: 4px;
       margin-bottom: 4px;
